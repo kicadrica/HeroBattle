@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585f3547b229dd749a0a795aa8e923b0, type: 3}
+  m_Name: Level11Wave1
+  m_EditorClassIdentifier: 
+  Stages:
+  - MonsterType: 6
+    MonstersCount: 4
+    HealthCoef: 2.5
+    ScaleCoef: 1
+    Coins: 97
+    Delay: 0
+  - MonsterType: 9
+    MonstersCount: 2
+    HealthCoef: 2
+    ScaleCoef: 1
+    Coins: 86
+    Delay: 0
+  - MonsterType: 6
+    MonstersCount: 3
+    HealthCoef: 2.5
+    ScaleCoef: 1
+    Coins: 99
+    Delay: 3
+  - MonsterType: 7
+    MonstersCount: 5
+    HealthCoef: 3
+    ScaleCoef: 1
+    Coins: 100
+    Delay: 6
+  - MonsterType: 6
+    MonstersCount: 4
+    HealthCoef: 2.5
+    ScaleCoef: 1
+    Coins: 0
+    Delay: 1
+  - MonsterType: 7
+    MonstersCount: 3
+    HealthCoef: 3
+    ScaleCoef: 1
+    Coins: 153
+    Delay: 4
+  - MonsterType: 9
+    MonstersCount: 3
+    HealthCoef: 2
+    ScaleCoef: 1
+    Coins: 68
+    Delay: 7
+  - MonsterType: 6
+    MonstersCount: 4
+    HealthCoef: 2.5
+    ScaleCoef: 1
+    Coins: 99
+    Delay: 0
+  - MonsterType: 6
+    MonstersCount: 3
+    HealthCoef: 2.5
+    ScaleCoef: 1
+    Coins: 67
+    Delay: 20
+  - MonsterType: 9
+    MonstersCount: 4
+    HealthCoef: 1
+    ScaleCoef: 1
+    Coins: 52
+    Delay: 0
+  - MonsterType: 6
+    MonstersCount: 4
+    HealthCoef: 2.5
+    ScaleCoef: 1
+    Coins: 88
+    Delay: 3

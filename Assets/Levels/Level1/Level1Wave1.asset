@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585f3547b229dd749a0a795aa8e923b0, type: 3}
+  m_Name: Level1Wave1
+  m_EditorClassIdentifier: 
+  Stages:
+  - MonsterType: 6
+    MonstersCount: 2
+    HealthCoef: 1
+    ScaleCoef: 1
+    Coins: 0
+    Delay: 0
+  - MonsterType: 7
+    MonstersCount: 1
+    HealthCoef: 1
+    ScaleCoef: 1
+    Coins: 23
+    Delay: 0
+  - MonsterType: 6
+    MonstersCount: 2
+    HealthCoef: 1
+    ScaleCoef: 1
+    Coins: 56
+    Delay: 10

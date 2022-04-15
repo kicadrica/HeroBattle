@@ -1,0 +1,269 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2458177302005082240
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2458177302005082246}
+  - component: {fileID: 2458177302005082241}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2458177302005082246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2458177302005082240}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.74358374, y: 2.2718313, z: 484.40674}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2458177302005082241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2458177302005082240}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a197ccf4808c2e74d8aae32c10b67061, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SoundMixer: {fileID: 6050462985006551413, guid: b7d95da3ea0ee2341975ce78f23305ef,
+    type: 2}
+  MusicMixer: {fileID: 6827120237504853709, guid: b7d95da3ea0ee2341975ce78f23305ef,
+    type: 2}
+  SoundsList:
+  - Name: 0
+    Clip:
+    - {fileID: 8300000, guid: 818bf798ff0e31649a2175f5e5523c1a, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0.1
+    RandomPitch: 0.05
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 1
+    Clip:
+    - {fileID: 8300000, guid: dedd38f9198367a4ead46a6f01bc695a, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    RandomVolume: 0.036
+    RandomPitch: 0.066
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 3
+    Clip:
+    - {fileID: 8300000, guid: 1b098c7c8fc371f4f9c27c4522acfcc7, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 2
+    Clip:
+    - {fileID: 8300000, guid: fde018d269beb68409c6bd2a55937be5, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.1
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 5
+    Clip:
+    - {fileID: 8300000, guid: f2c8b90b1ca5c5447b2f221df5f91df1, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 6
+    Clip:
+    - {fileID: 8300000, guid: f151def9a28dbfe49903f244593a4a3e, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 7
+    Clip:
+    - {fileID: 8300000, guid: 8efb2137e426c3b439fcb48d45f53538, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 8
+    Clip:
+    - {fileID: 8300000, guid: 70fcee805103750499e436702dff4321, type: 3}
+    Volume: 0.4
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 9
+    Clip:
+    - {fileID: 8300000, guid: e156a4a9af334a242a7154b39dd0e880, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 11
+    Clip:
+    - {fileID: 8300000, guid: f6c56e6286412c24c8b2fdd76e8678ca, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 12
+    Clip:
+    - {fileID: 8300000, guid: e02679258f1d2fe4cb9f14e598419649, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 13
+    Clip:
+    - {fileID: 8300000, guid: f0532a5a0c879e646ab245404da2ff0e, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 14
+    Clip:
+    - {fileID: 8300000, guid: 2b5df14281f1b404f83ae490c3d1e18d, type: 3}
+    - {fileID: 8300000, guid: 179aba18c2eb20e40821811cb22ffeda, type: 3}
+    - {fileID: 8300000, guid: a3b6e31156f02e64a966270fc32900d2, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 15
+    Clip:
+    - {fileID: 8300000, guid: 9587bde788b37ee4ab5c37171d92669e, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 16
+    Clip:
+    - {fileID: 8300000, guid: 13d9fc3949d73c944b90674c32c19413, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 17
+    Clip:
+    - {fileID: 8300000, guid: 898e22c7700a99045b1b4ec9e14865d8, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 18
+    Clip:
+    - {fileID: 8300000, guid: 6fcbb94359168c046b0455957e3bfd28, type: 3}
+    Volume: 1
+    Pitch: 0.74
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 19
+    Clip:
+    - {fileID: 8300000, guid: eebd1c8def9936d4fac690a927ca3ac4, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 20
+    Clip:
+    - {fileID: 8300000, guid: cba67442b29405f4594d919fc8e66ed1, type: 3}
+    Volume: 1
+    Pitch: 0.85
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 21
+    Clip:
+    - {fileID: 8300000, guid: 7f0c0e0b85c4a8d4eae3791927da1d36, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 22
+    Clip:
+    - {fileID: 8300000, guid: 253812e62286dbd408c15af2d21223b3, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  - Name: 23
+    Clip:
+    - {fileID: 8300000, guid: 971fa8c98721640498e6be39c2858452, type: 3}
+    Volume: 1
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0.047
+    Loop: 0
+    Source: {fileID: 0}
+  MusicList:
+  - Name: 4
+    Clip:
+    - {fileID: 8300000, guid: 909d28652b01bc44d914d73c76b78a0e, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0
+    Loop: 1
+    Source: {fileID: 0}
+  - Name: 10
+    Clip:
+    - {fileID: 8300000, guid: a630150d9b1d901459eb7173db57818c, type: 3}
+    Volume: 0.5
+    Pitch: 1
+    RandomVolume: 0
+    RandomPitch: 0
+    Loop: 1
+    Source: {fileID: 0}
