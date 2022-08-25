@@ -11,7 +11,7 @@ public class PlayButton : MonoBehaviour
     }
     private void LoadGame()
     {
-        if (LevelManager.CurLevel == null && PlayerPrefs.GetInt("Level") < 2) {
+        if (LevelManager.CurLevelNumber <= 1) {
             LevelManager.SetCurLevel(_firstLevel);
             SceneManager.LoadScene("Game");
         }

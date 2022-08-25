@@ -19,7 +19,7 @@ public class LevelSelection : MonoBehaviour
         var button = GetComponent<Button>();
         button.onClick.AddListener(PassValues);
 
-        var curLevel = LevelManager.CurLevelIndex;
+        var curLevel = LevelManager.CurLevelNumber;
         if (curLevel >= LevelNumber || LevelNumber == 1) {
             button.interactable = true;
             StarImage.sprite = ActiveStar;

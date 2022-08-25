@@ -14,8 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Waves:
   - {fileID: 11400000, guid: 4d62a9ddbff71c34b9967a3bcc9f9826, type: 2}
-  - {fileID: 11400000, guid: ec4f4be72e6c3e74ab70264e72541f3f, type: 2}
   - {fileID: 11400000, guid: 308b076738994704ba74338e190b4610, type: 2}
-  - {fileID: 11400000, guid: 2b54055ff5ccc2140b26b6c5f8fcf518, type: 2}
-  - {fileID: 11400000, guid: 67ee7d0dfdceefe47a21bb60251ad386, type: 2}
   NumberOfLevel: 3

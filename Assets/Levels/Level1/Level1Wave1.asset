@@ -30,4 +30,4 @@ MonoBehaviour:
     HealthCoef: 1
     ScaleCoef: 1
     Coins: 56
-    Delay: 10
+    Delay: 4

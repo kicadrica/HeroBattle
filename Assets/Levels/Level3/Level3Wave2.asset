@@ -14,26 +14,50 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Stages:
   - MonsterType: 7
-    MonstersCount: 4
+    MonstersCount: 3
     HealthCoef: 1
     ScaleCoef: 1
-    Coins: 52
+    Coins: 35
     Delay: 0
   - MonsterType: 6
-    MonstersCount: 2
+    MonstersCount: 3
     HealthCoef: 1
     ScaleCoef: 1
     Coins: 0
     Delay: 0
   - MonsterType: 7
-    MonstersCount: 3
+    MonstersCount: 2
     HealthCoef: 1
     ScaleCoef: 1
-    Coins: 55
-    Delay: 4
+    Coins: 0
+    Delay: 3
   - MonsterType: 6
     MonstersCount: 4
     HealthCoef: 1
     ScaleCoef: 1
+    Coins: 52
+    Delay: 5
+  - MonsterType: 7
+    MonstersCount: 4
+    HealthCoef: 1
+    ScaleCoef: 1
+    Coins: 35
+    Delay: 5
+  - MonsterType: 6
+    MonstersCount: 3
+    HealthCoef: 1
+    ScaleCoef: 1
     Coins: 10
-    Delay: 0
+    Delay: 3
+  - MonsterType: 6
+    MonstersCount: 4
+    HealthCoef: 1
+    ScaleCoef: 1
+    Coins: 85
+    Delay: 5
+  - MonsterType: 7
+    MonstersCount: 2
+    HealthCoef: 1
+    ScaleCoef: 1
+    Coins: 52
+    Delay: 2

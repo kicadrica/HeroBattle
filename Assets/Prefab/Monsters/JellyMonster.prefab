@@ -112,6 +112,7 @@ MonoBehaviour:
   CoinsForMonster: 30
   MonsterType: 6
   PointOfDeath: {fileID: 6862729000796004842}
+  DeathAnimTime: 0.7
 --- !u!114 &7516874788628298942
 MonoBehaviour:
   m_ObjectHideFlags: 0

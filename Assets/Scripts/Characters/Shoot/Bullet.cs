@@ -26,6 +26,8 @@ public class Bullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
+        if (transform.position.y > ScreenBorders.MaxY) return;
+        
         if (col.gameObject.CompareTag(tag)) return;
         var target = col.GetComponent<IDamagable>();
         

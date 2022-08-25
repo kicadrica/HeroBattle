@@ -15,43 +15,43 @@ MonoBehaviour:
   Stages:
   - MonsterType: 7
     MonstersCount: 3
-    HealthCoef: 6
+    HealthCoef: 2
     ScaleCoef: 1
     Coins: 110
     Delay: 0
   - MonsterType: 6
     MonstersCount: 7
-    HealthCoef: 2
+    HealthCoef: 1.5
     ScaleCoef: 1
     Coins: 165
     Delay: 2
   - MonsterType: 7
     MonstersCount: 4
-    HealthCoef: 4
+    HealthCoef: 2
     ScaleCoef: 1
     Coins: 67
-    Delay: 20
+    Delay: 7
   - MonsterType: 7
     MonstersCount: 5
-    HealthCoef: 3
+    HealthCoef: 2
     ScaleCoef: 1
     Coins: 133
     Delay: 4
   - MonsterType: 6
     MonstersCount: 4
-    HealthCoef: 2
+    HealthCoef: 1.5
     ScaleCoef: 1
     Coins: 0
-    Delay: 0
+    Delay: 3
   - MonsterType: 6
     MonstersCount: 7
     HealthCoef: 1.5
     ScaleCoef: 1
-    Coins: 0
+    Coins: 200
     Delay: 5
   - MonsterType: 7
     MonstersCount: 3
-    HealthCoef: 4
+    HealthCoef: 2
     ScaleCoef: 1
     Coins: 78
     Delay: 3

@@ -4,8 +4,8 @@ public class LevelManager : MonoBehaviour
 {
     [SerializeField] private LevelSO[] _levelList;
     public static LevelSO CurLevel { get; private set; }
-    public static int CurLevelIndex {
-        get => PlayerPrefs.GetInt("Level");
+    public static int CurLevelNumber {
+        get => PlayerPrefs.GetInt("Level", 1);
         set {
             if (value > _instance._levelList.Length - 1) {
                 value = _instance._levelList.Length - 1;
@@ -20,7 +20,7 @@ public class LevelManager : MonoBehaviour
         if (_instance == null) {
             _instance = this;
             DontDestroyOnLoad(gameObject);
-            SetCurLevel(CurLevelIndex);
+            SetCurLevel(CurLevelNumber);
             
         } else {
             Destroy(gameObject);

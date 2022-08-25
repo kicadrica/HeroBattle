@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,9 @@ public class MonsterController : AbstractCharacter, IPoolItem
     [HideInInspector] public int CoinsForMonster = 30;
     public TypeOfPool MonsterType;
     public Transform PointOfDeath;
+
+    // This is the time it takes for the death animation to play out.
+    [SerializeField] private float DeathAnimTime; 
     public static event Action<MonsterController> OnMonsterDie;
     
     public static List<MonsterController> ActiveMonsters = new List<MonsterController>();
@@ -19,6 +23,8 @@ public class MonsterController : AbstractCharacter, IPoolItem
     {
         SceneManager.sceneLoaded += ReturnToPool;
         ActiveMonsters.Add(this);
+        Animator.SetBool("IsDead", false);
+        Animator.SetBool("IsHit", false);
     }
     protected override void Awake()
     {
@@ -36,8 +42,6 @@ public class MonsterController : AbstractCharacter, IPoolItem
 
     public override void TakeDamage(float damageAmount)
     {
-        if (transform.position.y > ScreenBorders.MaxY) return;
-
         Animator.SetBool("IsHit", true);
         _rb.AddForce(Vector2.up * 1.3f, ForceMode2D.Impulse);
         base.TakeDamage(damageAmount);
@@ -48,15 +52,16 @@ public class MonsterController : AbstractCharacter, IPoolItem
         base.Die();
         _col.enabled = false;
         _rb.velocity = Vector2.zero;
-           
-        Animator.SetBool("IsDead", true);
+
+        StartCoroutine(Animation_OnDie());
     }
     
-    //Assigned in the inspector in the death animation.
-    // ReSharper disable once UnusedMember.Local
-    private void Animation_OnDie()
+    private IEnumerator Animation_OnDie()
     {
-        //The death animation should have a sprite off animation!
+        Animator.SetBool("IsDead", true);
+        
+        yield return new WaitForSeconds(DeathAnimTime);
+        
         var explosionEffect = Pool.GetFromPool<ImpactEffectController>(TypeOfPool.MonsterExplosion);
         explosionEffect.transform.position = PointOfDeath.position;
         AudioManager.Instance.PlaySound(TypeOfSound.Explosion);

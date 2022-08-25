@@ -13,9 +13,15 @@ MonoBehaviour:
   m_Name: Level10Wave1
   m_EditorClassIdentifier: 
   Stages:
+  - MonsterType: 7
+    MonstersCount: 10
+    HealthCoef: 1
+    ScaleCoef: 1
+    Coins: 100
+    Delay: 0
   - MonsterType: 10
     MonstersCount: 1
     HealthCoef: 1
     ScaleCoef: 2.5
-    Coins: 1350
-    Delay: 0
+    Coins: 1300
+    Delay: 5

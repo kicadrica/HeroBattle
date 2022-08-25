@@ -24,7 +24,7 @@ MonoBehaviour:
     HealthCoef: 1.5
     ScaleCoef: 1
     Coins: 77
-    Delay: 2
+    Delay: 1
   - MonsterType: 6
     MonstersCount: 4
     HealthCoef: 1.4
@@ -36,7 +36,7 @@ MonoBehaviour:
     HealthCoef: 1.5
     ScaleCoef: 1
     Coins: 0
-    Delay: 7
+    Delay: 5
   - MonsterType: 6
     MonstersCount: 6
     HealthCoef: 1.1
@@ -66,13 +66,13 @@ MonoBehaviour:
     HealthCoef: 1
     ScaleCoef: 1
     Coins: 45
-    Delay: 5
+    Delay: 4
   - MonsterType: 6
     MonstersCount: 4
     HealthCoef: 1.4
     ScaleCoef: 1
     Coins: 69
-    Delay: 20
+    Delay: 5
   - MonsterType: 7
     MonstersCount: 5
     HealthCoef: 1.5

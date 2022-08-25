@@ -28,7 +28,7 @@ public class WinController : MonoBehaviour
     [SerializeField] private Transform TimerIcon;
 
     [SerializeField] private TextMeshProUGUI HeadingText;
-    [SerializeField] private Transform PlayButton;
+    //[SerializeField] private Transform PlayButton;
     
     private void Awake()
     {
@@ -50,8 +50,8 @@ public class WinController : MonoBehaviour
     private void CompleteLevel()
     {
         StartCoroutine(WinAnimation());
-        if (LevelManager.CurLevelIndex <= LevelManager.CurLevel.NumberOfLevel) {
-            LevelManager.CurLevelIndex++;
+        if (LevelManager.CurLevelNumber <= LevelManager.CurLevel.NumberOfLevel) {
+            LevelManager.CurLevelNumber++;
         }
     }
 
@@ -71,8 +71,8 @@ public class WinController : MonoBehaviour
         AudioManager.Instance.PlaySound(TypeOfSound.LevelComplete);
         HeadingAnim();
 
-        yield return new WaitForSeconds(HeadingTextDuration + DelayBetweenSteps);
-        PlayButtonAnim();
+        //yield return new WaitForSeconds(HeadingTextDuration + DelayBetweenSteps);
+        //PlayButtonAnim();
     }
 
     private void ShowWinPanel()
@@ -123,10 +123,10 @@ public class WinController : MonoBehaviour
         HeadingText.DOFade(0, HeadingTextDuration).SetLoops(2, LoopType.Yoyo);
     }
 
-    private void PlayButtonAnim()
+    /*private void PlayButtonAnim()
     {
         PlayButton.DOScale(IconsScaleCoeff, IconsScaleDuration).SetLoops(6, LoopType.Yoyo);
-    }
+    }*/
     
 
 }

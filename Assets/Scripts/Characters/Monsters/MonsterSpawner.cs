@@ -26,6 +26,7 @@ public class MonsterSpawner : MonoBehaviour
                 _coinsForLevel += stage.Coins;
             }
         }
+        Debug.Log(_coinsForLevel);
     }
 
     private void OnDisable()
