@@ -5,8 +5,8 @@ public abstract class BaseShooting : MonoBehaviour, ICharacterComponent
 {
     [SerializeField] private Transform ShootPoint;
     [SerializeField] private float Force = 10f;
-    [SerializeField]private float HitRate = 4f;
-    [SerializeField]protected float Damage = 10f;
+    [SerializeField] private float HitRate = 4f;
+    [SerializeField] protected float Damage = 10f;
     
     protected Animator Animator;
 
@@ -21,9 +21,9 @@ public abstract class BaseShooting : MonoBehaviour, ICharacterComponent
         while (true) {
             yield return new WaitForSeconds(1 / HitRate);
             MakeShoot();
-
         }
     }
+    
     protected abstract void MakeShoot();
     
     protected void ShootBullet(Bullet bullet, Transform shootPoint = null) 
@@ -38,6 +38,7 @@ public abstract class BaseShooting : MonoBehaviour, ICharacterComponent
 
         bullet.Launch(shootPoint.up * Force);
     }
+    
     public void TurnOff()
     {
         StopAllCoroutines();

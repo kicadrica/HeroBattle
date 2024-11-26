@@ -6,7 +6,7 @@ public class PlayerController : AbstractCharacter
     public static Transform PlayerTransform { get; private set; }
     public static event Action OnPlayerDead;
     
-    [SerializeField] private GameObject PlayerAttributes;
+    [SerializeField] private GameObject playerAttributes;
 
     protected override void Awake()
     {
@@ -24,7 +24,7 @@ public class PlayerController : AbstractCharacter
     {
         base.Die();
         
-        PlayerAttributes.SetActive(false);
+        playerAttributes.SetActive(false);
         Animator.SetBool("IsDead", true);
         
         OnPlayerDead?.Invoke();

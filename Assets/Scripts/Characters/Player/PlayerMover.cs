@@ -3,17 +3,20 @@ using UnityEngine;
 
 public class PlayerMover : MonoBehaviour, ICharacterComponent
 {
-    private const float TweeningDelay = 1.2f;
+    private const float Offset = 0.7f;
+    private const float MainAnimDelay = 1.2f;
+    private const float ExtraAnimDelay = 0.3f;
+    
     private Vector2 _touchPos;
-    private float _offset = 0.7f;
-    private bool _isCharacterDead;
-
     private Collider2D _collider2D;
+    
+    private bool _isCharacterDead;
     
     private void OnEnable()
     {
         _isCharacterDead = false;
     }
+    
     private void Start()
     {
         _collider2D = GetComponent<Collider2D>();
@@ -29,6 +32,7 @@ public class PlayerMover : MonoBehaviour, ICharacterComponent
         TouchController.OnDragMethod -= MovePlayer;
         MonsterSpawner.OnLevelComplete -= MoveWhenLevelComplete;
     }
+    
     private void SavePos()
     {
         _touchPos = transform.position;
@@ -40,17 +44,17 @@ public class PlayerMover : MonoBehaviour, ICharacterComponent
         if (GameController.IsGameOver) return;
         
         var newPos = _touchPos + direction;
-        if (newPos.x > ScreenBorders.MaxX - _offset) {
-            newPos.x = ScreenBorders.MaxX - _offset;
+        if (newPos.x > ScreenBorders.MaxX - Offset) {
+            newPos.x = ScreenBorders.MaxX - Offset;
         }
-        if (newPos.x < ScreenBorders.MinX + _offset) {
-            newPos.x = ScreenBorders.MinX + _offset;
+        if (newPos.x < ScreenBorders.MinX + Offset) {
+            newPos.x = ScreenBorders.MinX + Offset;
         }
-        if (newPos.y > ScreenBorders.MaxY - _offset) {
-            newPos.y = ScreenBorders.MaxY - _offset;
+        if (newPos.y > ScreenBorders.MaxY - Offset) {
+            newPos.y = ScreenBorders.MaxY - Offset;
         }
-        if (newPos.y < ScreenBorders.MinY + _offset) {
-            newPos.y = ScreenBorders.MinY + _offset;
+        if (newPos.y < ScreenBorders.MinY + Offset) {
+            newPos.y = ScreenBorders.MinY + Offset;
         }
 
         transform.position = newPos;
@@ -61,8 +65,8 @@ public class PlayerMover : MonoBehaviour, ICharacterComponent
         GameController.IsGameOver = true;
        _collider2D.enabled = false;
        
-        transform.DOMoveY(15, Global.WinDelay).SetDelay(TweeningDelay + 0.3f);
-        DOVirtual.DelayedCall(TweeningDelay, () => {
+        transform.DOMoveY(15, Global.WinDelay).SetDelay(MainAnimDelay + ExtraAnimDelay);
+        DOVirtual.DelayedCall(MainAnimDelay, () => {
             AudioManager.Instance.PlaySound(TypeOfSound.PlayerFly);
         });
     }

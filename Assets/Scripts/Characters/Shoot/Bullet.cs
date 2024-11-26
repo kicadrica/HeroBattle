@@ -4,22 +4,23 @@ using UnityEngine.SceneManagement;
 
 public class Bullet : MonoBehaviour
 {
-    [SerializeField] private TypeOfPool BulletType;
-    [SerializeField] private TypeOfPool HitType;
-    private float _bulletDamage = 10;
-    private float _timeToDestroy = 5f;
+    private const float TimeToDestroy = 5f;
     
-    private Rigidbody2D _rb;
-
+    [SerializeField] private TypeOfPool bulletType;
+    [SerializeField] private TypeOfPool hitType;
+    [SerializeField] private Rigidbody2D rb;
+    
+    private float _bulletDamage = 10;
+    
     public void Setup(float damage, string creatorTag)
     {
         _bulletDamage = damage;
         tag = creatorTag;
     }
+    
     public void Launch(Vector3 direction)
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _rb.AddForce(direction, ForceMode2D.Impulse);
+        rb.AddForce(direction, ForceMode2D.Impulse);
         
         StartCoroutine(DestroyYourselfIfNoTrigger());
     }
@@ -27,14 +28,14 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (transform.position.y > ScreenBorders.MaxY) return;
-        
         if (col.gameObject.CompareTag(tag)) return;
-        var target = col.GetComponent<IDamagable>();
         
+        var target = col.GetComponent<IDamagable>();
         if (target == null) return;
+        
         target.TakeDamage(_bulletDamage);
         
-        var hitEffect = Pool.GetFromPool<ImpactEffectController>(HitType);
+        var hitEffect = Pool.GetFromPool<ImpactEffectController>(hitType);
         hitEffect.transform.position = transform.position;
         ReturnToPool();
         
@@ -43,7 +44,7 @@ public class Bullet : MonoBehaviour
 
     private IEnumerator DestroyYourselfIfNoTrigger()
     {
-        yield return new WaitForSeconds(_timeToDestroy);
+        yield return new WaitForSeconds(TimeToDestroy);
         ReturnToPool();
     }
     
@@ -58,6 +59,6 @@ public class Bullet : MonoBehaviour
     }
     private void ReturnToPool(Scene arg0 = default, LoadSceneMode arg1 = default)
     {
-        Pool.PutToPool(BulletType, this);
+        Pool.PutToPool(bulletType, this);
     }
 }
