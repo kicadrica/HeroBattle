@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class PlayerShooting : BaseShooting
 {
@@ -13,22 +14,28 @@ public class PlayerShooting : BaseShooting
         _spreadCount = UpgradeManager.GetUpgradeInfo(UpgradeType.BulletSpread).GetCurrentUpgradeValue();
         Damage = _damage / _spreadCount;
     }
-    
-    protected override void MakeShoot()
-    {
-        if (GameController.IsGameOver) return;
-        if (MonsterController.ActiveMonsters.Count == 0) return;
 
+    protected override BulletsData RequestBulletData()
+    {
+        if (GameController.IsGameOver) return null;
+        if (MonsterController.ActiveMonsters.Count == 0) return null;
+        
         var startIndex = 0;
         var endIndex = _spreadCount;
         if (_spreadCount % 2 == 0) {
             startIndex++;
             endIndex++;
         }
-        for (int i = startIndex; i < endIndex; i++) {
-            
+        
+        var bulletsData = new BulletsData();
+        
+        for (int i = startIndex; i < endIndex; i++)
+        {
             var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.PlayerBullet);
-            ShootBullet(bullet, ShootPoints[i]);
+            bulletsData.Bullets.Add(bullet);
+            bulletsData.ShootTransforms.Add(ShootPoints[i]);
         }
+
+        return bulletsData;
     }
 }

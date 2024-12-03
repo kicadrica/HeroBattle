@@ -2,8 +2,13 @@
 using System.Collections;
 using UnityEngine;
 
-public class BossShooting : BaseShooting
+public class BossShooting : MonoBehaviour, ICharacterComponent
 {
+    [SerializeField] private float Force = 10f;
+    [SerializeField] protected float Damage = 10f;
+    
+    private Animator _animator;
+    
     [Serializable]
     public class ShootStage
     {
@@ -13,14 +18,14 @@ public class BossShooting : BaseShooting
 
     [SerializeField] private ShootStage[] ShootStages;
     
-    protected override void OnEnable()
+    private void Start()
     {
-        base.OnEnable();
-        StartCoroutine(MassShoot());
+        _animator = GetComponent<Animator>();
     }
-    protected override void MakeShoot()
+    
+    private void OnEnable()
     {
-        //Not used
+        StartCoroutine(MassShoot());
     }
 
     private IEnumerator MassShoot()
@@ -31,10 +36,10 @@ public class BossShooting : BaseShooting
                 var delay = ShootStages[i].StageDelay;
                 yield return new WaitForSeconds(delay - 0.5f);
                 
-                Animator.SetBool("IsBossAttack", true);
+                _animator.SetBool("IsBossAttack", true);
                 
                 yield return new WaitForSeconds(0.5f);
-                Animator.SetBool("IsBossAttack", false);
+                _animator.SetBool("IsBossAttack", false);
                 
                 foreach (var shootPoint in ShootStages[i].Points) {
                     var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.MonsterBullet);
@@ -44,5 +49,18 @@ public class BossShooting : BaseShooting
             }
         }
     }
+    
+    protected void ShootBullet(Bullet bullet, Transform shootPoint)
+    {
+        bullet.Setup(Damage, tag);
 
+        bullet.transform.position = new Vector3(shootPoint.position.x, shootPoint.position.y);
+
+        bullet.Launch(shootPoint.up * Force);
+    }
+
+    public void TurnOff()
+    {
+        StopAllCoroutines();
+    }
 }

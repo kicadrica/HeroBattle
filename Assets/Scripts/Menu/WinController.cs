@@ -69,7 +69,7 @@ public class WinController : MonoBehaviour
         
         yield return new WaitForSeconds(CoinsAnimDuration + IconsScaleDuration);
         AudioManager.Instance.PlaySound(TypeOfSound.LevelComplete);
-        HeadingAnim();
+        HidingAnim();
 
         //yield return new WaitForSeconds(HeadingTextDuration + DelayBetweenSteps);
         //PlayButtonAnim();
@@ -118,7 +118,7 @@ public class WinController : MonoBehaviour
         });
     }
 
-    private void HeadingAnim()
+    private void HidingAnim()
     {
         HeadingText.DOFade(0, HeadingTextDuration).SetLoops(2, LoopType.Yoyo);
     }

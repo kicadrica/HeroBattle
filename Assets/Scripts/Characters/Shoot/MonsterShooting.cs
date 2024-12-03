@@ -1,17 +1,26 @@
-﻿
+﻿using UnityEngine;
+using UnityEngine.Serialization;
+
 public class MonsterShooting : BaseShooting
 {
-    protected override void MakeShoot()
+    [FormerlySerializedAs("ShootPoint")] 
+    [SerializeField] private Transform shootPoint;
+    
+    protected override BulletsData RequestBulletData()
     {
-        if (GameController.IsGameOver) return;
-        if (transform.position.y > ScreenBorders.MaxY) return;
+        if (GameController.IsGameOver) return null;
+        if (transform.position.y > ScreenBorders.MaxY) return null;
+        
+        var bulletsData = new BulletsData();
         
         var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.MonsterBullet);
-        ShootBullet(bullet);
+        bulletsData.Bullets.Add(bullet);
         
+        bulletsData.ShootTransforms.Add(shootPoint);
+
         Animator.SetTrigger("Attack");
-        
         AudioManager.Instance.PlaySound(TypeOfSound.MonsterShooting);
+        
+        return bulletsData;
     }
-  
 }
