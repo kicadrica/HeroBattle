@@ -3,16 +3,20 @@ using UnityEngine;
 
 public class PlayerShooting : BaseShooting
 {
-    [SerializeField] private Transform[] ShootPoints;
+    [SerializeField] private Transform[] shootTransforms;
 
     private int _damage;
-    private int _spreadCount;
+    private int _bulletCount;
     
     private void Start()
     {
         _damage = UpgradeManager.GetUpgradeInfo(UpgradeType.Damage).GetCurrentUpgradeValue();
-        _spreadCount = UpgradeManager.GetUpgradeInfo(UpgradeType.BulletSpread).GetCurrentUpgradeValue();
-        Damage = _damage / _spreadCount;
+        _bulletCount = UpgradeManager.GetUpgradeInfo(UpgradeType.BulletSpread).GetCurrentUpgradeValue();
+        
+        Debug.Assert(_damage > 0, "Bullet damage was less than or equal to zero");
+        Debug.Assert(_bulletCount > 0, "Bullet count was less than or equal to zero");
+        
+        bulletDamage = (float)_damage / _bulletCount;
     }
 
     protected override BulletsData RequestBulletData()
@@ -21,19 +25,19 @@ public class PlayerShooting : BaseShooting
         if (MonsterController.ActiveMonsters.Count == 0) return null;
         
         var startIndex = 0;
-        var endIndex = _spreadCount;
-        if (_spreadCount % 2 == 0) {
+        var endIndex = _bulletCount;
+        if (_bulletCount % 2 == 0) {
             startIndex++;
             endIndex++;
         }
         
         var bulletsData = new BulletsData();
         
-        for (int i = startIndex; i < endIndex; i++)
+        for (var i = startIndex; i < endIndex; i++)
         {
             var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.PlayerBullet);
             bulletsData.Bullets.Add(bullet);
-            bulletsData.ShootTransforms.Add(ShootPoints[i]);
+            bulletsData.ShootTransforms.Add(shootTransforms[i]);
         }
 
         return bulletsData;

@@ -4,24 +4,21 @@ using UnityEngine;
 
 public class BossShooting : MonoBehaviour, ICharacterComponent
 {
-    [SerializeField] private float Force = 10f;
-    [SerializeField] protected float Damage = 10f;
+    private const float AnimationDelay = 0.5f;
+
+    [SerializeField] private float bulletForce = 10f;
+    [SerializeField] private float bulletDamage = 10f;
     
-    private Animator _animator;
+    [SerializeField] private Animator animator;
     
     [Serializable]
     public class ShootStage
     {
-        public float StageDelay;
-        public Transform[] Points;
+        public float stageDelay;
+        public Transform[] shootTransforms;
     }
 
-    [SerializeField] private ShootStage[] ShootStages;
-    
-    private void Start()
-    {
-        _animator = GetComponent<Animator>();
-    }
+    [SerializeField] private ShootStage[] shootStages;
     
     private void OnEnable()
     {
@@ -32,16 +29,16 @@ public class BossShooting : MonoBehaviour, ICharacterComponent
     {
         while (true) {
 
-            for (int i = 0; i < ShootStages.Length; i++) {
-                var delay = ShootStages[i].StageDelay;
+            for (var i = 0; i < shootStages.Length; i++) {
+                var delay = shootStages[i].stageDelay;
                 yield return new WaitForSeconds(delay - 0.5f);
                 
-                _animator.SetBool("IsBossAttack", true);
+                animator.SetBool("IsBossAttack", true);
                 
-                yield return new WaitForSeconds(0.5f);
-                _animator.SetBool("IsBossAttack", false);
+                yield return new WaitForSeconds(AnimationDelay);
+                animator.SetBool("IsBossAttack", false);
                 
-                foreach (var shootPoint in ShootStages[i].Points) {
+                foreach (var shootPoint in shootStages[i].shootTransforms) {
                     var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.MonsterBullet);
                     ShootBullet(bullet, shootPoint);
                     AudioManager.Instance.PlaySound(TypeOfSound.MonsterShooting);
@@ -50,13 +47,13 @@ public class BossShooting : MonoBehaviour, ICharacterComponent
         }
     }
     
-    protected void ShootBullet(Bullet bullet, Transform shootPoint)
+    private void ShootBullet(Bullet bullet, Transform shootPoint)
     {
-        bullet.Setup(Damage, tag);
+        bullet.Setup(bulletDamage, tag);
 
         bullet.transform.position = new Vector3(shootPoint.position.x, shootPoint.position.y);
 
-        bullet.Launch(shootPoint.up * Force);
+        bullet.Launch(shootPoint.up * bulletForce);
     }
 
     public void TurnOff()

@@ -4,7 +4,7 @@ using UnityEngine.Serialization;
 public class MonsterShooting : BaseShooting
 {
     [FormerlySerializedAs("ShootPoint")] 
-    [SerializeField] private Transform shootPoint;
+    [SerializeField] private Transform shootTransform;
     
     protected override BulletsData RequestBulletData()
     {
@@ -16,9 +16,9 @@ public class MonsterShooting : BaseShooting
         var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.MonsterBullet);
         bulletsData.Bullets.Add(bullet);
         
-        bulletsData.ShootTransforms.Add(shootPoint);
+        bulletsData.ShootTransforms.Add(shootTransform);
 
-        Animator.SetTrigger("Attack");
+        animator.SetTrigger("Attack");
         AudioManager.Instance.PlaySound(TypeOfSound.MonsterShooting);
         
         return bulletsData;

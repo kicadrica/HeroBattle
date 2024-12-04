@@ -209,7 +209,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1646590594}
   m_Layer: 8
-  m_Name: ShootPoint (4)
+  m_Name: ShootTransform (4)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -392,7 +392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4525396222411797136}
   m_Layer: 8
-  m_Name: ShootPoints
+  m_Name: ShootTransforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -428,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7270552936597506715}
   m_Layer: 8
-  m_Name: ShootPoint (3)
+  m_Name: ShootTransform (3)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -478,10 +478,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1475737857}
-  - {fileID: 1801501071}
-  - {fileID: 1553600705}
-  - {fileID: 990774219}
-  - {fileID: 8996548628349213962}
+  - {fileID: 2947567220260473180}
   - {fileID: 5600584481726590853}
   - {fileID: 6179586033039388562}
   m_Father: {fileID: 5014250578302086698}
@@ -657,7 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5014854456305262087}
   m_Layer: 8
-  m_Name: ShootPoint (1)
+  m_Name: ShootTransform (1)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -876,10 +873,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec1c1085c7f91384789f8e2e52fc9226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Force: 10
-  HitRate: 4
-  Damage: 20
-  ShootPoints:
+  bulletForce: 10
+  bulletRate: 4
+  bulletDamage: 20
+  animator: {fileID: 4956773824674152812}
+  shootTransforms:
   - {fileID: 5014854456305262087}
   - {fileID: 8720190232579928502}
   - {fileID: 7270552936597506715}
@@ -910,7 +908,7 @@ GameObject:
   - component: {fileID: 5600584481726590853}
   - component: {fileID: 5718201696262870645}
   m_Layer: 8
-  m_Name: shadow
+  m_Name: Shadow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -983,6 +981,41 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &6298726178429010706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2947567220260473180}
+  m_Layer: 8
+  m_Name: VisualElements
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2947567220260473180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6298726178429010706}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1801501071}
+  - {fileID: 1553600705}
+  - {fileID: 990774219}
+  - {fileID: 8996548628349213962}
+  m_Father: {fileID: 3745625194611138762}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7813871857858174046
 GameObject:
   m_ObjectHideFlags: 0
@@ -1070,7 +1103,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8318876902064223804}
   m_Layer: 8
-  m_Name: ShootPoint (5)
+  m_Name: ShootTransform (5)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1101,7 +1134,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8720190232579928502}
   m_Layer: 8
-  m_Name: ShootPoint (2)
+  m_Name: ShootTransform (2)
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -1128,12 +1161,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3745625194611138762}
+    m_TransformParent: {fileID: 2947567220260473180}
     m_Modifications:
     - target: {fileID: 1853955141085948304, guid: 80999daa79bb5be4c879f96fa250e0c9,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1853955141085948304, guid: 80999daa79bb5be4c879f96fa250e0c9,
         type: 3}
@@ -1217,12 +1250,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3745625194611138762}
+    m_TransformParent: {fileID: 2947567220260473180}
     m_Modifications:
     - target: {fileID: 4413504222017419406, guid: ad85574e3b8d919458ac8e68a8fb093a,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4413504222017419406, guid: ad85574e3b8d919458ac8e68a8fb093a,
         type: 3}
@@ -1306,12 +1339,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3745625194611138762}
+    m_TransformParent: {fileID: 2947567220260473180}
     m_Modifications:
     - target: {fileID: 4596116965277064682, guid: 3014d6ae89cd65e4393901306ab434f0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4596116965277064682, guid: 3014d6ae89cd65e4393901306ab434f0,
         type: 3}
@@ -1366,7 +1399,7 @@ PrefabInstance:
     - target: {fileID: 4596116965277064683, guid: 3014d6ae89cd65e4393901306ab434f0,
         type: 3}
       propertyPath: m_Name
-      value: Fire
+      value: Fire (1)
       objectReference: {fileID: 0}
     - target: {fileID: 4596116965277064683, guid: 3014d6ae89cd65e4393901306ab434f0,
         type: 3}
@@ -1395,12 +1428,12 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 3745625194611138762}
+    m_TransformParent: {fileID: 2947567220260473180}
     m_Modifications:
     - target: {fileID: 4596116965277064682, guid: 3014d6ae89cd65e4393901306ab434f0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 4596116965277064682, guid: 3014d6ae89cd65e4393901306ab434f0,
         type: 3}
@@ -1455,7 +1488,7 @@ PrefabInstance:
     - target: {fileID: 4596116965277064683, guid: 3014d6ae89cd65e4393901306ab434f0,
         type: 3}
       propertyPath: m_Name
-      value: Fire (1)
+      value: Fire (2)
       objectReference: {fileID: 0}
     - target: {fileID: 4596116965277064683, guid: 3014d6ae89cd65e4393901306ab434f0,
         type: 3}

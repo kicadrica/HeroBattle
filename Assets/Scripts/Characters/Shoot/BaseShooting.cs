@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,29 +7,33 @@ public abstract class BaseShooting : MonoBehaviour, ICharacterComponent
 {
     protected class BulletsData
     {
-        public List<Transform> ShootTransforms = new();
-        public List<Bullet> Bullets = new();
+        public readonly List<Transform> ShootTransforms = new();
+        public readonly List<Bullet> Bullets = new();
     }
     
-    [SerializeField] private float Force = 10f;
-    [SerializeField] private float HitRate = 4f;
-    [SerializeField] protected float Damage = 10f;
+    [SerializeField] private float bulletForce = 10f;
+    [SerializeField] private float shotsPerSecond = 4f;
+    [SerializeField] protected float bulletDamage = 10f;
+    [SerializeField] protected Animator animator;
     
-    protected Animator Animator;
     private List<Bullet> _bulletsList = new ();
     private List<Transform> _shootTransformsList = new ();
 
     private void OnEnable()
     {
-        Animator = GetComponent<Animator>();
         StartCoroutine(ShootCoroutine());
     }
     
     private IEnumerator ShootCoroutine()
     {
+        if (shotsPerSecond <= 0)
+        {
+            throw new Exception("Shots per second must be greater than zero.");
+        }
+        
         while (true) 
         {
-            yield return new WaitForSeconds(1 / HitRate);
+            yield return new WaitForSeconds(1 / shotsPerSecond);
             Shoot();
         }
     }
@@ -44,12 +49,12 @@ public abstract class BaseShooting : MonoBehaviour, ICharacterComponent
         _bulletsList = bulletData.Bullets;
         _shootTransformsList = bulletData.ShootTransforms;
 
-        for (int i = 0; i < _bulletsList.Count; i++)
+        for (var i = 0; i < _bulletsList.Count; i++)
         {
-            _bulletsList[i].Setup(Damage, tag);
+            _bulletsList[i].Setup(bulletDamage, tag);
         
             _bulletsList[i].transform.position = new Vector3(_shootTransformsList[i].position.x, _shootTransformsList[i].position.y);
-            _bulletsList[i].Launch(_shootTransformsList[i].up * Force);
+            _bulletsList[i].Launch(_shootTransformsList[i].up * bulletForce);
         }
     }
 

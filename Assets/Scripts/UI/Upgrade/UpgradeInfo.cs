@@ -19,20 +19,20 @@ public class UpgradeInfo
     }
     public int GetCurrentUpgradeValue()
     {
-        return BaseValue + ValuePerLevel * _curUpgradeLevel;
+        return BaseValue + (ValuePerLevel * _curUpgradeLevel);
     }
 
     public int GetNextUpgradeValue()
     {
         if (!IsUpgradeMax) {
-            return BaseValue + ValuePerLevel * (_curUpgradeLevel + 1);
+            return BaseValue + (ValuePerLevel * (_curUpgradeLevel + 1));
         }
         return GetCurrentUpgradeValue();
     }
 
     public int GetNextUpgradePrice()
     {
-        return UpgradePrice * _curUpgradeLevel + UpgradePrice * (_curUpgradeLevel + 1);
+        return (UpgradePrice * _curUpgradeLevel) + (UpgradePrice * (_curUpgradeLevel + 1));
     }
 
     public void UpgradeToNextLevel()
