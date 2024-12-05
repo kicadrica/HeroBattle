@@ -874,7 +874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 10
-  bulletRate: 4
+  shotsPerSecond: 4
   bulletDamage: 20
   animator: {fileID: 4956773824674152812}
   shootTransforms:

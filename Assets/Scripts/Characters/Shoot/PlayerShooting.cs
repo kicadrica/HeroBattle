@@ -42,4 +42,9 @@ public class PlayerShooting : BaseShooting
 
         return bulletsData;
     }
+
+    protected override void PlayShootEffects()
+    {
+        //No effects
+    }
 }

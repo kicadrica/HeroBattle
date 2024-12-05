@@ -17,10 +17,13 @@ public class MonsterShooting : BaseShooting
         bulletsData.Bullets.Add(bullet);
         
         bulletsData.ShootTransforms.Add(shootTransform);
-
-        animator.SetTrigger("Attack");
-        AudioManager.Instance.PlaySound(TypeOfSound.MonsterShooting);
         
         return bulletsData;
+    }
+
+    protected override void PlayShootEffects()
+    {
+        animator.SetTrigger("Attack");
+        AudioManager.Instance.PlaySound(TypeOfSound.MonsterShooting);
     }
 }

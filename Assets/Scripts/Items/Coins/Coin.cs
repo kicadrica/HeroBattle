@@ -29,13 +29,15 @@ public class Coin : MonoBehaviour
     {
         yield return new WaitForSeconds(_coinLifeTime);
         
-        if(PlayerController.PlayerTransform == null) yield break;
-        while (Vector3.Distance(transform.position, PlayerController.PlayerTransform.position) > _distance) {
+        while (PlayerController.PlayerTransform && Vector3.Distance(transform.position, PlayerController.PlayerTransform.position) > _distance)
+        {
             var dir = PlayerController.PlayerTransform.position - transform.position;
             dir.Normalize();
             transform.position += dir * Time.deltaTime * _speed;
+            
             yield return null;
         }
+        
         Pool.PutToPool(TypeOfPool.Coin, this);
         AudioManager.Instance.PlaySound(TypeOfSound.CoinsAttraction);
     }

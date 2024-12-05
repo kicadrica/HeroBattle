@@ -56,9 +56,13 @@ public abstract class BaseShooting : MonoBehaviour, ICharacterComponent
             _bulletsList[i].transform.position = new Vector3(_shootTransformsList[i].position.x, _shootTransformsList[i].position.y);
             _bulletsList[i].Launch(_shootTransformsList[i].up * bulletForce);
         }
+        
+        PlayShootEffects();
     }
 
     protected abstract BulletsData RequestBulletData();
+
+    protected virtual void PlayShootEffects(){}
     
     public void TurnOff()
     {
