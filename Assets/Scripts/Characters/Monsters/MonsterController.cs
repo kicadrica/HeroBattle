@@ -5,16 +5,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MonsterController : AbstractCharacter, IPoolItem
-{
-    [HideInInspector] public int CoinsForMonster = 30;
-    public TypeOfPool MonsterType;
-    public Transform PointOfDeath;
-
-    // This is the time it takes for the death animation to play out.
-    [SerializeField] private float DeathAnimTime; 
+{ 
     public static event Action<MonsterController> OnMonsterDie;
+    public static readonly List<MonsterController> ActiveMonsters = new();
     
-    public static List<MonsterController> ActiveMonsters = new List<MonsterController>();
+    [HideInInspector] public int coinsForMonster = 30;
+    
+    public TypeOfPool monsterType;
+    public Transform pointOfDeath;
+    
+    [SerializeField] private float deathAnimTime = 0.7f;
 
     private Collider2D _col;
     private Rigidbody2D _rb;
@@ -26,9 +26,11 @@ public class MonsterController : AbstractCharacter, IPoolItem
         Animator.SetBool("IsDead", false);
         Animator.SetBool("IsHit", false);
     }
+    
     protected override void Awake()
     {
         base.Awake();
+        
         _col = GetComponent<Collider2D>();
         _rb = GetComponent<Rigidbody2D>();
     }
@@ -60,18 +62,18 @@ public class MonsterController : AbstractCharacter, IPoolItem
     {
         Animator.SetBool("IsDead", true);
         
-        yield return new WaitForSeconds(DeathAnimTime);
+        yield return new WaitForSeconds(deathAnimTime);
         
         var explosionEffect = Pool.GetFromPool<ImpactEffectController>(TypeOfPool.MonsterExplosion);
-        explosionEffect.transform.position = PointOfDeath.position;
+        explosionEffect.transform.position = pointOfDeath.position;
         AudioManager.Instance.PlaySound(TypeOfSound.Explosion);
         OnMonsterDie?.Invoke(this);
-        Pool.PutToPool(MonsterType, this);
+        Pool.PutToPool(monsterType, this);
     }
     
     private void ReturnToPool(Scene arg0 = default, LoadSceneMode arg1 = default)
     {
-        Pool.PutToPool(MonsterType, this);
+        Pool.PutToPool(monsterType, this);
     }
     
     public void ResetPoolItem()

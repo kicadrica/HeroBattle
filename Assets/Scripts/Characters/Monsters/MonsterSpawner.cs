@@ -74,9 +74,9 @@ public class MonsterSpawner : MonoBehaviour
             
             if (i == stage.MonstersCount - 1) {
                 //Calculate last monster in stage.
-                monster.CoinsForMonster = stage.Coins;
+                monster.coinsForMonster = stage.Coins;
             } else {
-                monster.CoinsForMonster = 0;
+                monster.coinsForMonster = 0;
             }
             
         }

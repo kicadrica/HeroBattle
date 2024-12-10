@@ -325,11 +325,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 295f76e686aa702409da7eda4ae943c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseHealth: 7500
-  CoinsForMonster: 324
-  MonsterType: 8
-  PointOfDeath: {fileID: 1856674754528609779}
-  DeathAnimTime: 0.7
+  baseHealth: 7500
+  coinsForMonster: 30
+  monsterType: 8
+  pointOfDeath: {fileID: 1856674754528609779}
+  deathAnimTime: 0.7
 --- !u!114 &661457123496626227
 MonoBehaviour:
   m_ObjectHideFlags: 0

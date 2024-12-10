@@ -25,15 +25,15 @@ public class GameController : MonoBehaviour
 
     private void DropCoins(MonsterController monster)
     {
-        if (monster.CoinsForMonster == 0) return;
+        if (monster.coinsForMonster == 0) return;
         
-        for (int i = 0; i < CalculateShownCoins(monster.CoinsForMonster); i++) {
+        for (int i = 0; i < CalculateShownCoins(monster.coinsForMonster); i++) {
             var coin = Pool.GetFromPool<Coin>(TypeOfPool.Coin);
             coin.transform.position = monster.transform.position;
             coin.Show();
         }
         
-        CoinsPerLevel += monster.CoinsForMonster;
+        CoinsPerLevel += monster.coinsForMonster;
     }
 
     private int CalculateShownCoins(int coinsForMonster)

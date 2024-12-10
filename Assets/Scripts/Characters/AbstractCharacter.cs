@@ -4,7 +4,7 @@ public class AbstractCharacter : MonoBehaviour, IDamagable
 {
     public Health Health;
     
-    [SerializeField] private float BaseHealth = 100;
+    [SerializeField] private float baseHealth = 100;
     protected Animator Animator;
     
     protected bool IsDead;
@@ -12,7 +12,7 @@ public class AbstractCharacter : MonoBehaviour, IDamagable
     protected virtual void Awake()
     {
         Animator = GetComponent<Animator>();
-        Health = new Health(BaseHealth);
+        Health = new Health(baseHealth);
     }
     
     public virtual void TakeDamage(float damageAmount)
@@ -38,6 +38,4 @@ public class AbstractCharacter : MonoBehaviour, IDamagable
             component.TurnOff();
         }
     }
-    
-    
 }
