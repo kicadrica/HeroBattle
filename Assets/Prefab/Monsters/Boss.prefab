@@ -154,7 +154,6 @@ GameObject:
   - component: {fileID: 3143329062838766444}
   - component: {fileID: 661457123496626227}
   - component: {fileID: 5101568719678897938}
-  - component: {fileID: 4365763835423661906}
   - component: {fileID: 3393560315960150939}
   m_Layer: 0
   m_Name: Boss
@@ -344,7 +343,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletForce: 5
-  shotsPerSecond: 4
   bulletDamage: 30
   animator: {fileID: 95171608050424218}
   shootStages:
@@ -394,28 +392,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643bb14e3475e4a4283ccde582a2fba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 95171608050424218}
   bulletForce: 10
   shotsPerSecond: 0.5
   bulletDamage: 35
-  animator: {fileID: 95171608050424218}
-  shootTransform: {fileID: 6714217616153557079}
---- !u!114 &4365763835423661906
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1674528916550958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643bb14e3475e4a4283ccde582a2fba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletForce: 10
-  shotsPerSecond: 0.5
-  bulletDamage: 35
-  animator: {fileID: 95171608050424218}
-  shootTransform: {fileID: 390050954875254261}
+  shootTransforms:
+  - {fileID: 6714217616153557079}
+  - {fileID: 390050954875254261}
 --- !u!114 &3393560315960150939
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -438,7 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3524362931757537492}
   m_Layer: 0
-  m_Name: SingleShootTransforms
+  m_Name: EyesShootTransforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

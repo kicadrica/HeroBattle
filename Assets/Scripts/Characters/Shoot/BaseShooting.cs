@@ -5,20 +5,15 @@ using UnityEngine;
 
 public abstract class BaseShooting : MonoBehaviour, ICharacterComponent
 {
-    protected class BulletsData
-    {
-        public readonly List<Transform> ShootTransforms = new();
-        public readonly List<Bullet> Bullets = new();
-    }
+    [SerializeField] protected Animator animator;
     
     [SerializeField] private float bulletForce = 10f;
     [SerializeField] private float shotsPerSecond = 4f;
-    [SerializeField] protected float bulletDamage = 10f;
-    [SerializeField] protected Animator animator;
     
-    private List<Bullet> _bulletsList = new ();
-    private List<Transform> _shootTransformsList = new ();
-
+    [SerializeField] protected float bulletDamage = 10f;
+    [SerializeField] protected Transform[] shootTransforms;
+    
+    
     private void OnEnable()
     {
         StartCoroutine(ShootCoroutine());
@@ -40,27 +35,20 @@ public abstract class BaseShooting : MonoBehaviour, ICharacterComponent
 
     private void Shoot()
     {
-        var bulletData = RequestBulletData();
-        if (bulletData == null) return;
+        var bullets = GetBulletsList();
+        if (bullets == null) return;
         
-        _bulletsList.Clear();
-        _shootTransformsList.Clear();
 
-        _bulletsList = bulletData.Bullets;
-        _shootTransformsList = bulletData.ShootTransforms;
-
-        for (var i = 0; i < _bulletsList.Count; i++)
+        foreach (var bullet in bullets)
         {
-            _bulletsList[i].Setup(bulletDamage, tag);
-        
-            _bulletsList[i].transform.position = new Vector3(_shootTransformsList[i].position.x, _shootTransformsList[i].position.y);
-            _bulletsList[i].Launch(_shootTransformsList[i].up * bulletForce);
+            bullet.Setup(bulletDamage, tag);
+            bullet.Launch(bullet.transform.up * bulletForce);
         }
         
         PlayShootEffects();
     }
 
-    protected abstract BulletsData RequestBulletData();
+    protected abstract List<Bullet> GetBulletsList();
 
     protected virtual void PlayShootEffects(){}
     

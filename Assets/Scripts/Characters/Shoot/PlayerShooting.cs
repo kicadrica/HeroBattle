@@ -1,10 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerShooting : BaseShooting
 {
-    [SerializeField] private Transform[] shootTransforms;
-
     private int _damage;
     private int _bulletCount;
     
@@ -19,7 +18,7 @@ public class PlayerShooting : BaseShooting
         bulletDamage = (float)_damage / _bulletCount;
     }
 
-    protected override BulletsData RequestBulletData()
+    protected override List<Bullet> GetBulletsList()
     {
         if (GameController.IsGameOver) return null;
         if (MonsterController.ActiveMonsters.Count == 0) return null;
@@ -30,17 +29,21 @@ public class PlayerShooting : BaseShooting
             startIndex++;
             endIndex++;
         }
-        
-        var bulletsData = new BulletsData();
+
+        var bulletsList = new List<Bullet>();
         
         for (var i = startIndex; i < endIndex; i++)
         {
             var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.PlayerBullet);
-            bulletsData.Bullets.Add(bullet);
-            bulletsData.ShootTransforms.Add(shootTransforms[i]);
+            
+            var bulletTransform = bullet.transform;
+            bulletTransform.position = shootTransforms[i].position;
+            bulletTransform.up = shootTransforms[i].up;
+            
+            bulletsList.Add(bullet);
         }
 
-        return bulletsData;
+        return bulletsList;
     }
 
     protected override void PlayShootEffects()

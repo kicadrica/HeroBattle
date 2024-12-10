@@ -204,11 +204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643bb14e3475e4a4283ccde582a2fba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 95398376640972650}
   bulletForce: 4
   shotsPerSecond: 0.5
   bulletDamage: 15
-  animator: {fileID: 95398376640972650}
-  shootTransform: {fileID: 6010463657971211476}
+  shootTransforms:
+  - {fileID: 6010463657971211476}
 --- !u!114 &2279647429460283569
 MonoBehaviour:
   m_ObjectHideFlags: 0

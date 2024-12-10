@@ -1,24 +1,26 @@
-﻿using UnityEngine;
-using UnityEngine.Serialization;
+﻿using System.Collections.Generic;
 
 public class MonsterShooting : BaseShooting
 {
-    [FormerlySerializedAs("ShootPoint")] 
-    [SerializeField] private Transform shootTransform;
-    
-    protected override BulletsData RequestBulletData()
+    protected override List<Bullet> GetBulletsList()
     {
         if (GameController.IsGameOver) return null;
         if (transform.position.y > ScreenBorders.MaxY) return null;
-        
-        var bulletsData = new BulletsData();
-        
-        var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.MonsterBullet);
-        bulletsData.Bullets.Add(bullet);
-        
-        bulletsData.ShootTransforms.Add(shootTransform);
-        
-        return bulletsData;
+
+        var bulletsList = new List<Bullet>();
+
+        for (var i = 0; i < shootTransforms.Length; i++)
+        {
+            var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.MonsterBullet);
+
+            var bulletTransform = bullet.transform;
+            bulletTransform.position = shootTransforms[i].position;
+            bulletTransform.up = shootTransforms[i].up;
+            
+            bulletsList.Add(bullet);
+        }
+
+        return bulletsList;
     }
 
     protected override void PlayShootEffects()

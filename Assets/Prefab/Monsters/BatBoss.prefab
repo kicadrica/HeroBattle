@@ -78,7 +78,6 @@ GameObject:
   - component: {fileID: 1458801900283524123}
   - component: {fileID: 2305614895497863926}
   - component: {fileID: 4694234310344683425}
-  - component: {fileID: 4694234310344683424}
   - component: {fileID: 6810051807563107066}
   - component: {fileID: 8664078134251784925}
   m_Layer: 9
@@ -268,11 +267,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643bb14e3475e4a4283ccde582a2fba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4643819359734013217}
   bulletForce: 6
   shotsPerSecond: 1.5
   bulletDamage: 20
-  animator: {fileID: 4643819359734013217}
-  shootTransform: {fileID: 1317779605550417567}
+  shootTransforms:
+  - {fileID: 1317779605550417567}
 --- !u!114 &4694234310344683425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,28 +285,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 643bb14e3475e4a4283ccde582a2fba1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 4643819359734013217}
   bulletForce: 4
   shotsPerSecond: 0.5
   bulletDamage: 15
-  animator: {fileID: 4643819359734013217}
-  shootTransform: {fileID: 5182718200267088392}
---- !u!114 &4694234310344683424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4694234310344683431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 643bb14e3475e4a4283ccde582a2fba1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletForce: 4
-  shotsPerSecond: 0.5
-  bulletDamage: 15
-  animator: {fileID: 4643819359734013217}
-  shootTransform: {fileID: 5182718200479430439}
+  shootTransforms:
+  - {fileID: 5182718200267088392}
+  - {fileID: 5182718200479430439}
 --- !u!114 &6810051807563107066
 MonoBehaviour:
   m_ObjectHideFlags: 0
