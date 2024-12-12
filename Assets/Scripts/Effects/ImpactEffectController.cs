@@ -6,6 +6,6 @@ public class ImpactEffectController : MonoBehaviour
 
     private void OnParticleSystemStopped()
     {
-        Pool.PutToPool(Type, this);
+        Pool.ReturnObject(Type, this);
     }
 }

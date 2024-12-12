@@ -62,7 +62,7 @@ public class MonsterSpawner : MonoBehaviour
     private void SpawnStages(WaveSO.StageInfo stage)
     {
         for (var i = 0; i < stage.MonstersCount; i++) {
-            var monster = Pool.GetFromPool<MonsterController>(stage.MonsterType);
+            var monster = Pool.GetObject<MonsterController>(stage.MonsterType);
 
             var randomPoint = Random.Range(0, Points.Length);
             var randomOffset = Random.Range(-Offset, Offset);

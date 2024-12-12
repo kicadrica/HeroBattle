@@ -34,7 +34,7 @@ public class PlayerShooting : BaseShooting
         
         for (var i = startIndex; i < endIndex; i++)
         {
-            var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.PlayerBullet);
+            var bullet = Pool.GetObject<Bullet>(TypeOfPool.PlayerBullet);
             
             var bulletTransform = bullet.transform;
             bulletTransform.position = shootTransforms[i].position;

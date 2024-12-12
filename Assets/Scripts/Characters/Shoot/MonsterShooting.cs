@@ -11,7 +11,7 @@ public class MonsterShooting : BaseShooting
 
         for (var i = 0; i < shootTransforms.Length; i++)
         {
-            var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.MonsterBullet);
+            var bullet = Pool.GetObject<Bullet>(TypeOfPool.MonsterBullet);
 
             var bulletTransform = bullet.transform;
             bulletTransform.position = shootTransforms[i].position;

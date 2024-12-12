@@ -35,7 +35,7 @@ public class Bullet : MonoBehaviour
         
         target.TakeDamage(_bulletDamage);
         
-        var hitEffect = Pool.GetFromPool<ImpactEffectController>(hitType);
+        var hitEffect = Pool.GetObject<ImpactEffectController>(hitType);
         hitEffect.transform.position = transform.position;
         ReturnToPool();
         
@@ -59,6 +59,6 @@ public class Bullet : MonoBehaviour
     }
     private void ReturnToPool(Scene arg0 = default, LoadSceneMode arg1 = default)
     {
-        Pool.PutToPool(bulletType, this);
+        Pool.ReturnObject(bulletType, this);
     }
 }

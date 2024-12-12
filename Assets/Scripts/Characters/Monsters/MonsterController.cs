@@ -64,16 +64,16 @@ public class MonsterController : AbstractCharacter, IPoolItem
         
         yield return new WaitForSeconds(deathAnimTime);
         
-        var explosionEffect = Pool.GetFromPool<ImpactEffectController>(TypeOfPool.MonsterExplosion);
+        var explosionEffect = Pool.GetObject<ImpactEffectController>(TypeOfPool.MonsterExplosion);
         explosionEffect.transform.position = pointOfDeath.position;
         AudioManager.Instance.PlaySound(TypeOfSound.Explosion);
         OnMonsterDie?.Invoke(this);
-        Pool.PutToPool(monsterType, this);
+        Pool.ReturnObject(monsterType, this);
     }
     
     private void ReturnToPool(Scene arg0 = default, LoadSceneMode arg1 = default)
     {
-        Pool.PutToPool(monsterType, this);
+        Pool.ReturnObject(monsterType, this);
     }
     
     public void ResetPoolItem()

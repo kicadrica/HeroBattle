@@ -28,7 +28,7 @@ public class GameController : MonoBehaviour
         if (monster.coinsForMonster == 0) return;
         
         for (int i = 0; i < CalculateShownCoins(monster.coinsForMonster); i++) {
-            var coin = Pool.GetFromPool<Coin>(TypeOfPool.Coin);
+            var coin = Pool.GetObject<Coin>(TypeOfPool.Coin);
             coin.transform.position = monster.transform.position;
             coin.Show();
         }

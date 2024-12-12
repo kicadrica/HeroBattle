@@ -39,7 +39,7 @@ public class BossShooting : MonoBehaviour, ICharacterComponent
                 animator.SetBool("IsBossAttack", false);
                 
                 foreach (var shootPoint in shootStages[i].shootTransforms) {
-                    var bullet = Pool.GetFromPool<Bullet>(TypeOfPool.MonsterBullet);
+                    var bullet = Pool.GetObject<Bullet>(TypeOfPool.MonsterBullet);
                     ShootBullet(bullet, shootPoint);
                     AudioManager.Instance.PlaySound(TypeOfSound.MonsterShooting);
                 }

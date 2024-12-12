@@ -6,17 +6,17 @@ using UnityEngine;
 public class Pool : MonoBehaviour
 {
     [Serializable]
-    public class PoolSettings
+    public class PoolData
     {
-        public TypeOfPool Type;
-        public GameObject Prefab;
-        public int Count;
+        public TypeOfPool poolType;
+        public GameObject prefab;
+        public int count;
     }
 
-    [SerializeField] private PoolSettings[] Settings;
+    [SerializeField] private PoolData[] poolData;
     private static Pool _instance;
 
-    private static Dictionary<TypeOfPool, Queue<GameObject>> _poolsDictionary = new Dictionary<TypeOfPool, Queue<GameObject>>();
+    private static readonly Dictionary<TypeOfPool, Queue<GameObject>> PoolsDictionary = new();
     
     private void Awake()
     {
@@ -27,48 +27,76 @@ public class Pool : MonoBehaviour
         _instance = this;
         DontDestroyOnLoad(this);
         
-        for (var i = 0; i < Settings.Length; i++) {
-            FillSinglePool(Settings[i].Type);
-        }
+        FillPool();
     }
-
-    private void FillSinglePool(TypeOfPool type)
+    
+    public static T GetObject<T>(TypeOfPool type)
     {
-        var settings = Settings.FirstOrDefault(item => item.Type == type);
-        if (settings == null) return;
-        
-        if (!_poolsDictionary.ContainsKey(settings.Type)) {
-            _poolsDictionary.Add(settings.Type, new Queue<GameObject>());
-        }
-        
-        for (int i = 0; i < settings.Count; i++) {
-            var poolItem = Instantiate(settings.Prefab, transform);
-            poolItem.SetActive(false);
-            _poolsDictionary[settings.Type].Enqueue(poolItem);
-        }
-    }
-
-    public static T GetFromPool<T>(TypeOfPool type)
-    {
-        if (!_poolsDictionary.ContainsKey(type) || _poolsDictionary[type].Count == 0) {
-           _instance.FillSinglePool(type);
+        if (!PoolsDictionary.ContainsKey(type) || PoolsDictionary[type].Count == 0) {
+           _instance.CreateSingleObject(type);
            
            Debug.Log("Pool creates new item: " + type);
         }
-        var item = _poolsDictionary[type].Dequeue();
+        
+        var item = PoolsDictionary[type].Dequeue();
         item.SetActive(true);
+        
         foreach (var poolItem in item.GetComponentsInChildren<IPoolItem>()) {
             poolItem.ResetPoolItem();
         }
+        
         return item.GetComponent<T>();
     }
 
-    public static void PutToPool(TypeOfPool type, Component item)
+    public static void ReturnObject(TypeOfPool type, Component item)
     {
         item.gameObject.SetActive(false);
-        _poolsDictionary[type].Enqueue(item.gameObject);
+        PoolsDictionary[type].Enqueue(item.gameObject);
+    }
+    
+    private void CreateSingleObject(TypeOfPool type)
+    {
+        var data = poolData.FirstOrDefault(item => item.poolType == type);
+        if (data == null)
+        {
+            throw new ArgumentException("The pool does not contain this type: " + type + ". Add it to the pool in the Inspector.");
+        }
+
+        var poolItem = Instantiate(data.prefab, transform);
+        poolItem.SetActive(false);
+        PoolsDictionary[data.poolType].Enqueue(poolItem);
+    }
+
+    private void FillPool()
+    {
+        foreach (var data in poolData)
+        {
+            if (!PoolsDictionary.ContainsKey(data.poolType)) {
+                PoolsDictionary.Add(data.poolType, new Queue<GameObject>());
+            }
+            
+            for (var i = 0; i < data.count; i++) {
+                var poolItem = Instantiate(data.prefab, transform);
+                poolItem.SetActive(false);
+                PoolsDictionary[data.poolType].Enqueue(poolItem);
+            }
+        }
     }
 
 }
 
-public enum TypeOfPool{MonsterBullet, PlayerBullet, MonsterExplosion, MonsterHit, PlayerHit, Coin, JellyMonster, BatMonster, Boss, YellowMonster, BatMonsterBoss}
+public enum TypeOfPool
+{
+    MonsterBullet, 
+    PlayerBullet, 
+    MonsterExplosion, 
+    MonsterHit, 
+    PlayerHit, 
+    Coin, 
+    JellyMonster, 
+    BatMonster, 
+    YellowBoss, 
+    YellowMonster, 
+    BatBoss
+    
+}

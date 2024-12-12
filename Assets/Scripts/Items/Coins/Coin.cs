@@ -23,7 +23,7 @@ public class Coin : MonoBehaviour
     }
     private void ReturnToPool(Scene arg0, LoadSceneMode arg1)
     {
-        Pool.PutToPool(TypeOfPool.Coin, this);
+        Pool.ReturnObject(TypeOfPool.Coin, this);
     }
     private IEnumerator CollectionCoin()
     {
@@ -38,7 +38,7 @@ public class Coin : MonoBehaviour
             yield return null;
         }
         
-        Pool.PutToPool(TypeOfPool.Coin, this);
+        Pool.ReturnObject(TypeOfPool.Coin, this);
         AudioManager.Instance.PlaySound(TypeOfSound.CoinsAttraction);
     }
 
