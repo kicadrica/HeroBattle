@@ -20,6 +20,7 @@ public class PlayerController : AbstractCharacter
         base.TakeDamage(damageAmount);
         AudioManager.Instance.PlaySound(TypeOfSound.PlayerHurt);
     }
+    
     protected override void Die()
     {
         base.Die();

@@ -5,6 +5,7 @@ public class GameController : MonoBehaviour
     public static bool IsGameOver;
 
     public static int CoinsPerLevel { get; private set; } = 0;
+    
     private void Start()
     {
         IsGameOver = false;

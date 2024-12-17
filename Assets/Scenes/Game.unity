@@ -2838,7 +2838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed091d45b24aa8b4295a7e7affe06e80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BGSprites:
+  backgroundSprites:
   - {fileID: 21300000, guid: b9b7596982316134fb0c99838d575f3b, type: 3}
   - {fileID: 21300000, guid: e58acaae8ea53004b8656e1b07be6aba, type: 3}
   - {fileID: 21300000, guid: 8b1e2f77055501143acf54bb4f206a0d, type: 3}

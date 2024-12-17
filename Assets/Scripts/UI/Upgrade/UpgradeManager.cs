@@ -5,7 +5,9 @@ using UnityEngine;
 public class UpgradeManager : MonoBehaviour
 {
     private static UpgradeManager _instance;
+    
     [SerializeField] private List<UpgradeInfo> AllUpgrades;
+    
     private void Awake()
     {
         if (_instance == null) {
